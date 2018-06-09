@@ -1,0 +1,13 @@
+{application, map_sets,
+ [{description, "sets-like wrapper based on maps"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {links, []}
+ ]}.

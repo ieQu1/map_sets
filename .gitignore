@@ -1,5 +1,6 @@
 .eunit
 deps
+_build
 *.o
 *.beam
 *.plt
@@ -8,3 +9,5 @@ ebin/*.beam
 rel/example_project
 .concrete/DEV_MODE
 .rebar
+*~
+*#
