@@ -107,9 +107,7 @@ intersection_(Large, Small) ->
                , Small
                , to_list(Small)).
 
--spec intersection([set(Elem)]) -> set(Elem).
-intersection([]) ->
-    #{};
+-spec intersection(nonempty_list(set(Elem))) -> set(Elem).
 intersection([H|T]) ->
     lists:foldl(fun intersection/2, H, T).
 

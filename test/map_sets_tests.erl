@@ -30,7 +30,7 @@ is_elem_neg_test() ->
     ?PROPER(?FORALL({E, L}, {term(), list()},
                     begin
                         L2 = [I || I <- L, I /= E],
-                        mset_set_refl(is_element, [E], [L])
+                        mset_set_refl(is_element, [E], [L2])
                     end
                    )).
 
@@ -67,6 +67,16 @@ union_2_test() ->
                         mset_set_refl(union, [], [S1, S2])
                    )).
 
+union_1_test() ->
+    ?PROPER(?FORALL(LL, list(list()),
+                    mset_set_refl_simple(union, LL)
+                   )).
+
+intersection_1_test() ->
+    ?PROPER(?FORALL(LL, nonempty_list(list()),
+                    mset_set_refl_simple(intersection, LL)
+                   )).
+
 intersection_2_test() ->
     ?PROPER(?FORALL({S1, S2}, {list(), list()},
                         mset_set_refl(intersection, [], [S1, S2])
@@ -77,17 +87,25 @@ is_disjoint_test() ->
                         mset_set_refl(is_disjoint, [], [S1, S2])
                    )).
 
+to_list(M, A) ->
+    lists:sort(M:to_list(A)).
+
+mset_set_refl_simple(F, Args) ->
+    Ls  = [sets:from_list(I)     || I <- Args],
+    Lms = [map_sets:from_list(I) || I <- Args],
+    to_list(sets, sets:F(Ls)) == to_list(map_sets, map_sets:F(Lms)).
+
 mset_set_refl(F, Args, Sets) ->
     Set_args  = Args ++ lists:map(fun sets:from_list/1, Sets),
     MSet_args = Args ++ lists:map(fun map_sets:from_list/1, Sets),
     TotalSize = lists:sum([length(I) || I <- Sets]),
-    {T_s, R_s}   = timer:tc(sets,    F, Set_args),
+    {T_s, R_s}   = timer:tc(sets,     F, Set_args),
     {T_ms, R_ms} = timer:tc(map_sets, F, MSet_args),
     %% Prepare results:
     case sets:is_set(R_s) of
         true ->
-            R2_s  = lists:sort(sets:to_list(R_s)),
-            R2_ms = lists:sort(map_sets:to_list(R_ms));
+            R2_s  = to_list(sets, R_s),
+            R2_ms = to_list(map_sets, R_ms);
         false ->
             if is_list(R_s) ->
                     R2_s  = lists:sort(R_s),

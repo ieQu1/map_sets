@@ -1,6 +1,7 @@
 language: erlang
 otp_release:
-  - 19.0
+  - 20.0
+  - 19.3
   - 18.2.1
 
-script: "rebar3 do dialyzer,eunit"
+script: "rebar3 as test do dialyzer,eunit,cover"
