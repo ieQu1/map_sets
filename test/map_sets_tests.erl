@@ -4,29 +4,29 @@
 -include_lib("eunit/include/eunit.hrl").
 
 -define(PROPER(PROP),
-        {timeout, 300,
-        ?assertEqual( true
-                    , proper:quickcheck(PROP, [ {numtests, 100}
-                                              %% , {max_size, 100}
-                                              ])
-                    )}).
+        {timeout, 60,
+         ?_assertEqual( true
+                      , proper:quickcheck(PROP, [ {numtests, 100}
+                                                  %% , {max_size, 100}
+                                                ])
+                      )}).
 
-size_test() ->
+is_set_test_() ->
     ?PROPER(?FORALL(L, list(term()),
                     mset_set_refl(is_set, [], [L])
                    )).
 
-from_list_test() ->
+from_list_test_() ->
     ?PROPER(?FORALL(L, list(term()),
                     mset_set_refl(from_list, [L], [])
                    )).
 
-to_list_test() ->
+to_list_test_() ->
     ?PROPER(?FORALL(L, list(term()),
                     mset_set_refl(to_list, [], [L])
                    )).
 
-is_elem_neg_test() ->
+is_elem_neg_test_() ->
     ?PROPER(?FORALL({E, L}, {term(), list()},
                     begin
                         L2 = [I || I <- L, I /= E],
@@ -34,7 +34,7 @@ is_elem_neg_test() ->
                     end
                    )).
 
-is_elem_pos_test() ->
+is_elem_pos_test_() ->
     ?PROPER(?FORALL({E, L1, L2}, {term(), list(), list()},
                     begin
                         L = L1 ++ [E|L2],
@@ -42,47 +42,47 @@ is_elem_pos_test() ->
                     end
                    )).
 
-add_elem_test() ->
+add_elem_test_() ->
     ?PROPER(?FORALL({E, L}, {term(), list()},
                         mset_set_refl(add_element, [E], [L])
                    )).
 
-del_elem_test() ->
+del_elem_test_() ->
     ?PROPER(?FORALL({E, L}, {term(), list()},
                         mset_set_refl(del_element, [E], [L])
                    )).
 
-is_subset_test() ->
+is_subset_test_() ->
     ?PROPER(?FORALL({S1, S2}, {list(), list()},
                         mset_set_refl(is_subset, [], [S1, S2])
                    )).
 
-subtract_test() ->
+subtract_test_() ->
     ?PROPER(?FORALL({S1, S2}, {list(), list()},
                         mset_set_refl(subtract, [], [S1, S2])
                    )).
 
-union_2_test() ->
+union_2_test_() ->
     ?PROPER(?FORALL({S1, S2}, {list(), list()},
                         mset_set_refl(union, [], [S1, S2])
                    )).
 
-union_1_test() ->
+union_1_test_() ->
     ?PROPER(?FORALL(LL, list(list()),
                     mset_set_refl_simple(union, LL)
                    )).
 
-intersection_1_test() ->
+intersection_1_test_() ->
     ?PROPER(?FORALL(LL, nonempty_list(list()),
                     mset_set_refl_simple(intersection, LL)
                    )).
 
-intersection_2_test() ->
+intersection_2_test_() ->
     ?PROPER(?FORALL({S1, S2}, {list(), list()},
                         mset_set_refl(intersection, [], [S1, S2])
                    )).
 
-is_disjoint_test() ->
+is_disjoint_test_() ->
     ?PROPER(?FORALL({S1, S2}, {list(), list()},
                         mset_set_refl(is_disjoint, [], [S1, S2])
                    )).
