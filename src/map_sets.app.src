@@ -1,6 +1,6 @@
 {application, map_sets,
  [{description, "sets-like wrapper based on maps"},
-  {vsn, "0.1.1"},
+  {vsn, "0.1.2"},
   {registered, []},
   {applications,
    [kernel,
@@ -9,5 +9,6 @@
   {env,[]},
   {modules, []},
 
-  {links, []}
+  {links,[{"Github","https://github.com/k32/map_sets"}]},
+  {licenses, ["public domain"]}
  ]}.
