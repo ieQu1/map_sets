@@ -11,7 +11,6 @@ defmodule Benchmark.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
@@ -20,7 +19,9 @@ defmodule Benchmark.MixProject do
 
   defp deps do
     [{:benchee, "~> 0.13", only: :dev},
-     {:map_sets, "~> 0.1.1", only: :dev}
+     {:benchee_html, "~> 0.4", only: :dev},
+     {:benchee_csv, "~> 0.7", only: :dev},
+     {:map_sets, path: "../"}
     ]
   end
 end

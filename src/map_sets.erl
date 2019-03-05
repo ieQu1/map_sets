@@ -145,14 +145,14 @@ intersection(S1, S2) ->
     end.
 intersection_(Large, Small) ->
     maps:fold( fun(E, _, Acc) ->
-                       case Large of
-                           #{E := _} ->
-                               Acc;
+                       case maps:is_key(E, Large) of
+                           true ->
+                               Acc #{E => ?UNUSED};
                            _ ->
-                               maps:remove(E, Acc)
+                               Acc
                        end
                end
-             , Small
+             , #{}
              , Small).
 
 -spec intersection(nonempty_list(set(Elem))) -> set(Elem).
