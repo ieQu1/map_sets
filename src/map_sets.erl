@@ -17,6 +17,17 @@
 
 -define(UNUSED, unused).
 
+-ifdef(OTP_RELEASE). %% OTP21+
+
+-define(USE_MAP_ITERATORS, true).
+-define(iter(A), maps:iterator(A)).
+
+-else.
+
+-define(iter(A), maps:keys(A)).
+
+-endif.
+
 -spec new() -> set().
 new() ->
     #{}.
@@ -66,14 +77,32 @@ del_element(Elem, Set) ->
     maps:remove(Elem, Set).
 
 -spec is_subset(set(Elem), set(Elem)) -> boolean().
+-ifndef(USE_MAP_ITERATORS).
 is_subset(S1, S2) ->
     try
-        [true = is_element(E, S2) || E <- to_list(S1)],
+        [is_element(E, S2) orelse throw(not_subset) || E <- to_list(S1)],
         true
     catch
-        _:{badmatch, false} ->
+        not_subset ->
             false
     end.
+-else.
+is_subset(S1, S2) ->
+  is_subset_(maps:iterator(S1), S2).
+
+is_subset_(Iter, S2) ->
+    case maps:next(Iter) of
+        none ->
+            true;
+        {K, _, Next} ->
+            case S2 of
+                #{K := _} ->
+                    is_subset_(Next, S2);
+                _ ->
+                    false
+            end
+    end.
+-endif.
 
 -spec subtract(set(Elem), set(Elem)) -> set(Elem).
 subtract(S1, S2) ->
@@ -96,16 +125,16 @@ intersection(S1, S2) ->
             intersection_(S2, S1)
     end.
 intersection_(Large, Small) ->
-    lists:foldl( fun(E, Acc) ->
-                         case Large of
-                             #{E := _} ->
-                                 Acc;
-                             _ ->
-                                 maps:remove(E, Acc)
-                         end
-                 end
-               , Small
-               , to_list(Small)).
+    maps:fold( fun(E, _, Acc) ->
+                       case Large of
+                           #{E := _} ->
+                               Acc;
+                           _ ->
+                               maps:remove(E, Acc)
+                       end
+               end
+             , Small
+             , Small).
 
 -spec intersection(nonempty_list(set(Elem))) -> set(Elem).
 intersection([H|T]) ->
@@ -115,15 +144,31 @@ intersection([H|T]) ->
 is_disjoint(S1, S2) ->
     case maps:size(S1) > maps:size(S2) of
         true ->
-            is_disjoint_(S1, S2);
+            is_disjoint_(S1, ?iter(S2));
         false ->
-            is_disjoint_(S2, S1)
+            is_disjoint_(S2, ?iter(S1))
     end.
+
+-ifndef(USE_MAP_ITERATORS).
 is_disjoint_(Large, Small) ->
     try
-        [false = maps:is_key(I, Large) || I <- to_list(Small)],
+        [maps:is_key(I, Large) andalso throw(not_disjoint) || I <- Small],
         true
     catch
-        _:{badmatch, true} ->
+        not_disjoint ->
             false
     end.
+-else.
+is_disjoint_(Large, Small) ->
+    case maps:next(Small) of
+        none ->
+            true;
+        {K, _, Next} ->
+            case maps:is_key(K, Large) of
+                true ->
+                    false;
+                false ->
+                    is_disjoint_(Large, Next)
+            end
+    end.
+-endif.
