@@ -1,14 +1,35 @@
 %% s/sets/map_sets/g
-%% Why? Because spead (This module piggybacks on `maps' module's NIFs)
+%% Why? Because spead (This module piggybacks on `maps' module's BIFs)
 -module(map_sets).
 
--export([new/0,is_set/1,size/1,to_list/1,from_list/1]).
--export([is_element/2,add_element/2,del_element/2]).
+-export([ new/0
+        , is_set/1
+        , size/1
+        , to_list/1
+        , from_list/1
+        ]).
 
--export([union/2,union/1,intersection/2,intersection/1]).
--export([is_disjoint/2]).
--export([subtract/2,is_subset/2]).
--export([fold/3,filter/2]).
+-export([ is_element/2
+        , add_element/2
+        , del_element/2
+        ]).
+
+-export([ union/2
+        , union/1
+        , intersection/2
+        , intersection/1
+        ]).
+
+-export([ is_disjoint/2
+        ]).
+
+-export([ subtract/2
+        , is_subset/2
+        ]).
+
+-export([ fold/3
+        , filter/2
+        ]).
 
 -export_type([set/1, set/0]).
 
@@ -17,14 +38,25 @@
 
 -define(UNUSED, unused).
 
--ifdef(OTP_RELEASE). %% OTP21+
+-ifdef(OTP_RELEASE). %% OTP21+ supports map iterators
 
--define(USE_MAP_ITERATORS, true).
--define(iter(A), maps:iterator(A)).
+-define(iterable(A), maps:iterator(A)).
+
+-define(iterate(I, Last, K, Next, Cons),
+        case maps:next(I) of
+            none -> Last;
+            {K, _, Next} -> Cons
+        end).
 
 -else.
 
--define(iter(A), maps:keys(A)).
+-define(iterable(A), maps:keys(A)).
+
+-define(iterate(I, Last, K, Next, Cons),
+        case I of
+            [] -> Last;
+            [K|Next] -> Cons
+        end).
 
 -endif.
 
@@ -77,32 +109,19 @@ del_element(Elem, Set) ->
     maps:remove(Elem, Set).
 
 -spec is_subset(set(Elem), set(Elem)) -> boolean().
--ifndef(USE_MAP_ITERATORS).
 is_subset(S1, S2) ->
-    try
-        [is_element(E, S2) orelse throw(not_subset) || E <- to_list(S1)],
-        true
-    catch
-        not_subset ->
-            false
-    end.
--else.
-is_subset(S1, S2) ->
-  is_subset_(maps:iterator(S1), S2).
+  is_subset_(?iterable(S1), S2).
 
 is_subset_(Iter, S2) ->
-    case maps:next(Iter) of
-        none ->
-            true;
-        {K, _, Next} ->
-            case S2 of
-                #{K := _} ->
-                    is_subset_(Next, S2);
-                _ ->
-                    false
-            end
-    end.
--endif.
+    ?iterate(Iter,
+             true,
+             K, Next,
+             case maps:is_key(K, S2) of
+                 true ->
+                     is_subset_(Next, S2);
+                 false ->
+                     false
+             end).
 
 -spec subtract(set(Elem), set(Elem)) -> set(Elem).
 subtract(S1, S2) ->
@@ -144,31 +163,17 @@ intersection([H|T]) ->
 is_disjoint(S1, S2) ->
     case maps:size(S1) > maps:size(S2) of
         true ->
-            is_disjoint_(S1, ?iter(S2));
+            is_disjoint_(S1, ?iterable(S2));
         false ->
-            is_disjoint_(S2, ?iter(S1))
+            is_disjoint_(S2, ?iterable(S1))
     end.
-
--ifndef(USE_MAP_ITERATORS).
 is_disjoint_(Large, Small) ->
-    try
-        [maps:is_key(I, Large) andalso throw(not_disjoint) || I <- Small],
-        true
-    catch
-        not_disjoint ->
-            false
-    end.
--else.
-is_disjoint_(Large, Small) ->
-    case maps:next(Small) of
-        none ->
-            true;
-        {K, _, Next} ->
-            case maps:is_key(K, Large) of
-                true ->
-                    false;
-                false ->
-                    is_disjoint_(Large, Next)
-            end
-    end.
--endif.
+    ?iterate(Small,
+             true,
+             K, Next,
+             case maps:is_key(K, Large) of
+                 true ->
+                     false;
+                 false ->
+                     is_disjoint_(Large, Next)
+             end).

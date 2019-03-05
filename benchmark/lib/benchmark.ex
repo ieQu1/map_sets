@@ -1,7 +1,14 @@
-list = Enum.to_list(1..10_000)
-map_fun = fn(i) -> [i, i * i] end
-
-Benchee.run(%{
-    "flat_map"    => fn -> Enum.flat_map(list, map_fun) end,
-    "map.flatten" => fn -> list |> Enum.map(map_fun) |> List.flatten end
-})
+def run_1(TestName, {F1, F2}, M1) do
+  MSN = TestName ++ " map_sets"
+  SN  = TestName ++ " sets"
+  Benchee.run %{
+    MSN =>
+    {
+      fn({input, resource}) -> F1(input, resource) end,
+      before_scenario: fn({input, resource}) ->
+        resource = alter_resource(resource)
+        {input, resource}
+      end
+    }
+  }
+end

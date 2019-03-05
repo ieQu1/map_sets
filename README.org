@@ -6,5 +6,6 @@ It's a drop-in replacement of OTP =sets= module based on maps. It's
 much faster and simpler, as it makes heavy use of =maps= module's
 BIFs.
 
-=sets= interface is fully preserved, so it should be sufficient to
-just query-replace =sets= with =map_sets= in your codebase.
+=sets= interface and sematics are fully preserved, so it should be
+sufficient to just use replace =sets= with =map_sets= in your codebase
+via sed.
