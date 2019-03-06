@@ -3,6 +3,8 @@
 -include_lib("proper/include/proper.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
+%% Macros:
+
 -define(PROPER(PROP),
         {timeout, 60,
          ?_assertEqual( true
@@ -10,6 +12,8 @@
                                                   %% , {max_size, 100}
                                                 ])
                       )}).
+
+%% Testcases:
 
 is_set_test_() ->
     ?PROPER(?FORALL(L, list(term()),
@@ -87,6 +91,55 @@ is_disjoint_test_() ->
                         mset_set_refl(is_disjoint, [], [S1, S2])
                    )).
 
+intersection_subset_test_() ->
+    ?PROPER(?FORALL({L1, L2}, {string(), string()},
+                    begin
+                        S1 = map_sets:from_list(L1),
+                        S2 = map_sets:from_list(L2),
+                        I  = map_sets:intersection(S1, S2),
+                        map_sets:is_subset(I, S1) andalso
+                        map_sets:is_subset(I, S2)
+                    end)).
+
+intersection_disjoint_test_() ->
+    ?PROPER(?FORALL({L1, L2}, {non_empty(string()), non_empty(string())},
+                    begin
+                        S1 = map_sets:from_list(L1),
+                        S2 = map_sets:from_list(L2),
+                        I  = map_sets:intersection(S1, S2),
+                        map_sets:is_disjoint(S1, S2) orelse
+                        map_sets:size(I) > 0
+                    end)).
+
+intersection_union_same_test_() ->
+    ?PROPER(?FORALL(L, list(),
+                    begin
+                        S = map_sets:from_list(L),
+                        map_sets:union(S, S) =:= S andalso
+                        map_sets:intersection(S, S) =:= S
+                    end)).
+
+substract_disjoint_test_() ->
+    ?PROPER(?FORALL({L1, L2}, {string(), string()},
+                    begin
+                        S1 = map_sets:from_list(L1),
+                        S2 = map_sets:from_list(L2),
+                        S3 = map_sets:subtract(S1, S2),
+                        map_sets:is_disjoint(S3, S2)
+                    end)).
+
+is_add_del_element_test_() ->
+    ?PROPER(?FORALL({L, E}, {string(), term()},
+                    begin
+                        S = map_sets:from_list(L),
+                        S1 = map_sets:add_element(E, S),
+                        S2 = map_sets:del_element(E, S1),
+                        map_sets:is_element(E, S1) andalso
+                        not map_sets:is_element(E, S2)
+                    end)).
+
+%% Utility functions:
+
 to_list(M, A) ->
     lists:sort(M:to_list(A)).
 
@@ -98,9 +151,8 @@ mset_set_refl_simple(F, Args) ->
 mset_set_refl(F, Args, Sets) ->
     Set_args  = Args ++ lists:map(fun sets:from_list/1, Sets),
     MSet_args = Args ++ lists:map(fun map_sets:from_list/1, Sets),
-    TotalSize = lists:sum([length(I) || I <- Sets]),
-    {T_s, R_s}   = timer:tc(sets,     F, Set_args),
-    {T_ms, R_ms} = timer:tc(map_sets, F, MSet_args),
+    R_s  = apply(sets,     F, Set_args),
+    R_ms = apply(map_sets, F, MSet_args),
     %% Prepare results:
     case sets:is_set(R_s) of
         true ->
@@ -114,15 +166,6 @@ mset_set_refl(F, Args, Sets) ->
                     R2_s  = R_s,
                     R2_ms = R_ms
             end
-    end,
-    %% Completely bogus performance comparison:
-    DT = T_s - T_ms,
-    if DT > 0 ->
-            io:format(user, "^___^ ~p (~p): ~p~n", [F, TotalSize, DT]);
-       DT == 0 ->
-            ok;
-       true ->
-            io:format(user, "T___T ~p (~p): ~p~n", [F, TotalSize, -DT])
     end,
     case R2_s == R2_ms of
         true ->
