@@ -3,15 +3,14 @@
 [[https://travis-ci.org/k32/map_sets.svg?branch=master]]
 
 It's a drop-in replacement of OTP =sets= module based on maps. It's
-much faster and simpler, as it makes heavy use of =maps= module's
-BIFs.
+much faster and simpler, as it makes heavy use of =maps= BIFs.
 
 =sets= interface and sematics are fully preserved, so it should be
 sufficient to just use replace =sets= with =map_sets= in your codebase
 via sed.
 
 * Benchmarks
-A few unscientific crude benchamarks:
+A few unscientific crude benchmarks:
 
 #+BEGIN_SRC txt
 Operating System: Linux
