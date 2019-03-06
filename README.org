@@ -28,6 +28,19 @@ parallel: 1
 inputs: none specified
 Estimated total run time: 28 s
 
+Name                         ips        average  deviation         median         99th %
+sets from_list            215.46        4.64 ms    ±17.34%        4.43 ms        7.94 ms
+map_sets from_list        154.53        6.47 ms    ±14.01%        6.25 ms        9.25 ms
+
+Comparison:
+sets from_list            215.46
+map_sets from_list        154.53 - 1.39x slower
+
+Memory usage statistics:
+
+Name                  Memory usage
+sets from_list            13.09 MB
+map_sets from_list         0.46 MB - 0.04x memory usage
 
 Benchmarking map_sets empty intersection...
 Benchmarking sets empty intersection...

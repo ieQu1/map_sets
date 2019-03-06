@@ -4,6 +4,16 @@ l1 = Enum.to_list(1..10_000)
 l2 = Enum.to_list(10_001..20_000)
 l3 = Enum.to_list(5_000..15_000)
 
+Benchee.run(%{ 'sets from_list' => fn -> :sets.from_list(l1) end,
+               'map_sets from_list' => fn -> :map_sets.from_list(l1) end
+             },
+             time: 10,
+             memory_time: 2,
+             formatters: [ Benchee.Formatters.Console,
+                           {Benchee.Formatters.CSV, file: 'from_list.csv'}
+                         ]
+           )
+
 defmodule MapSets do
   def run(name, fun, sets0) do
     sets = Enum.map sets0, &:sets.from_list/1
