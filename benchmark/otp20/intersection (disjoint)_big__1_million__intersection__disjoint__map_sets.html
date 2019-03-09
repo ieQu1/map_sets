@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Benchee Report</title>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/benchee.css">
+    <link rel="stylesheet" type="text/css" href="assets/fontello/css/fontello.css">
+  
+</head>
+
+  <body>
+
+    <div class="header">
+  <h1>benchee report</h1>
+  
+  <span class="input-label">
+    Big (1 Million)
+  </span>
+
+
+  <span class="version-note">
+  <a href="javascript:toggleSystemDataInfo();" title="Click to toggle system info">System info</a>
+</span>
+
+</div>
+
+
+    <article id="system-info" class="benchee-systeminfo" >
+  <h3>System info</h3>
+  <ul class="benchee-systeminfo-list">
+    <li>Elixir: 1.7.4</li>
+    <li>Erlang: 20.3.8.9</li>
+    <li>Operating system: Linux</li>
+    <li>Available memory: 7.74 GB</li>
+    <li>CPU Information: Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz</li>
+    <li>Number of Available Cores: 4</li>
+  </ul>
+</article>
+
+
+    
+      <article>
+        <h2>
+          <a name="run_time" href="#run_time">intersection (disjoint) map_sets Run Time</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual run time distribution for intersection (disjoint) map_sets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+        <th>Iterations per Second</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">intersection (disjoint) map_sets</td>
+        
+        
+          <td>9.21</td>
+          <td>108.53 ms</td>
+          <td>±16.26%</td>
+          <td>101.19 ms</td>
+          <td>90.36 ms</td>
+          <td>203.30 ms</td>
+        
+        <td>45</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="run-times-histogram" class="plot"></div>
+        </section>
+        <section class="benchee-plot-container">
+          <div id="raw-run-times" class="plot"></div>
+        </section>
+      </article>
+    
+
+    
+      <article>
+        <h2>
+          <a name="memory" href="#memory">intersection (disjoint) map_sets Memory</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual memory usage distribution for intersection (disjoint) map_sets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">intersection (disjoint) map_sets</td>
+        
+        
+          <td>0.00011 MB</td>
+          <td>±0.00%</td>
+          <td>0.00011 MB</td>
+          <td>0.00011 MB</td>
+          <td>0.00011 MB</td>
+        
+        <td>6</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        
+      </article>
+    
+
+    <footer>
+      <a href="https://github.com/PragTob/benchee" target="blank">benchee version: 0.14.0 </a>
+<br/>
+<a href="https://github.com/PragTob/benchee_html" target="blank">benchee_html version: 0.6.0</a>
+
+
+    </footer>
+
+    
+  <script src="assets/javascripts/plotly-1.30.1.min.js"></script>
+  <script src="assets/javascripts/benchee.js"></script>
+
+
+
+    <script>
+      var scenario = {"name":"intersection (disjoint) map_sets","job_name":"intersection (disjoint) map_sets","input_name":"Big (1 Million)","run_time_statistics":{"average":108534876.1111111,"ips":9.213628244033407,"maximum":203302613.0,"median":101186176.0,"minimum":90358095.0,"mode":null,"percentiles":{"50":101186176.0,"99":203302613.0},"sample_size":45,"std_dev":17651479.20983365,"std_dev_ips":1.4984507581710167,"std_dev_ratio":0.16263416739669181},"memory_usage_statistics":{"average":112.0,"ips":null,"maximum":112,"median":112.0,"minimum":112,"mode":112,"percentiles":{"50":112.0,"99":112.0},"sample_size":6,"std_dev":0.0,"std_dev_ips":null,"std_dev_ratio":0.0},"run_times":[100057950.0,203302613.0,101124922.0,100369699.0,108250015.0,90711477.0,90358095.0,121273498.0,98760375.0,100146354.0,126901712.0,101186176.0,102648083.0,116902443.0,100444305.0,101235621.0,123655496.0,100255338.0,100439080.0,125538394.0,101733194.0,101205753.0,123365434.0,101112198.0,100497345.0,121383087.0,99689991.0,100672743.0,118532212.0,101158407.0,99509168.0,124677240.0,101863728.0,102383495.0,117532717.0,99506885.0,100596922.0,120871497.0,99440050.0,97782744.0,121416307.0,101011122.0,101286167.0,114064503.0,99214870.0],"memory_usages":[112,112,112,112,112,112],"tag":null};
+
+      var inputHeadline = " (Big (1 Million))"
+
+      
+        drawRunTimeHistogram(scenario, inputHeadline);
+        drawRawRunTimeChart(scenario, inputHeadline);
+      
+
+      
+        if (scenario.memory_usage_statistics.std_dev !== 0) {
+          drawMemoryHistogram(scenario, inputHeadline);
+          drawRawMemoryChart(scenario, inputHeadline);
+        };
+      
+    </script>
+  </body>
+</html>

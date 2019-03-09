@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Benchee Report</title>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/benchee.css">
+    <link rel="stylesheet" type="text/css" href="assets/fontello/css/fontello.css">
+  
+</head>
+
+  <body>
+
+    <div class="header">
+  <h1>benchee report</h1>
+  
+  <span class="input-label">
+    Middle (100 Thousand)
+  </span>
+
+
+  <span class="version-note">
+  <a href="javascript:toggleSystemDataInfo();" title="Click to toggle system info">System info</a>
+</span>
+
+</div>
+
+
+    <article id="system-info" class="benchee-systeminfo" >
+  <h3>System info</h3>
+  <ul class="benchee-systeminfo-list">
+    <li>Elixir: 1.7.4</li>
+    <li>Erlang: 20.3.8.9</li>
+    <li>Operating system: Linux</li>
+    <li>Available memory: 7.74 GB</li>
+    <li>CPU Information: Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz</li>
+    <li>Number of Available Cores: 4</li>
+  </ul>
+</article>
+
+
+    
+      <article>
+        <h2>
+          <a name="run_time" href="#run_time">intersection disjoint gb_sets Run Time</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual run time distribution for intersection disjoint gb_sets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+        <th>Iterations per Second</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">intersection disjoint gb_sets</td>
+        
+        
+          <td>213.08</td>
+          <td>4.69 ms</td>
+          <td>±28.05%</td>
+          <td>4.44 ms</td>
+          <td>4.08 ms</td>
+          <td>29.91 ms</td>
+        
+        <td>420</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="run-times-histogram" class="plot"></div>
+        </section>
+        <section class="benchee-plot-container">
+          <div id="raw-run-times" class="plot"></div>
+        </section>
+      </article>
+    
+
+    
+      <article>
+        <h2>
+          <a name="memory" href="#memory">intersection disjoint gb_sets Memory</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual memory usage distribution for intersection disjoint gb_sets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">intersection disjoint gb_sets</td>
+        
+        
+          <td>3.05 MB</td>
+          <td>±0.00%</td>
+          <td>3.05 MB</td>
+          <td>3.05 MB</td>
+          <td>3.05 MB</td>
+        
+        <td>69</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        
+      </article>
+    
+
+    <footer>
+      <a href="https://github.com/PragTob/benchee" target="blank">benchee version: 0.14.0 </a>
+<br/>
+<a href="https://github.com/PragTob/benchee_html" target="blank">benchee_html version: 0.6.0</a>
+
+
+    </footer>
+
+    
+  <script src="assets/javascripts/plotly-1.30.1.min.js"></script>
+  <script src="assets/javascripts/benchee.js"></script>
+
+
+
+    <script>
+      var scenario = {"name":"intersection disjoint gb_sets","job_name":"intersection disjoint gb_sets","input_name":"Middle (100 Thousand)","run_time_statistics":{"average":4693026.092857143,"ips":213.0821308498615,"maximum":29914052.0,"median":4438150.5,"minimum":4082540.0,"mode":4972190.0,"percentiles":{"50":4438150.5,"99":6105311.570000001},"sample_size":420,"std_dev":1316332.0532525266,"std_dev_ips":59.766733289620305,"std_dev_ratio":0.2804868388130217},"memory_usage_statistics":{"average":3200096.0,"ips":null,"maximum":3200096,"median":3200096.0,"minimum":3200096,"mode":3200096,"percentiles":{"50":3200096.0,"99":3200096.0},"sample_size":69,"std_dev":0.0,"std_dev_ips":null,"std_dev_ratio":0.0},"run_times":[4280147.0,29914052.0,4587367.0,4294843.0,4907684.0,4401029.0,4331855.0,5277910.0,4254729.0,4278491.0,5112037.0,4409902.0,4406810.0,4943093.0,4408968.0,4375488.0,4866832.0,4347130.0,4326172.0,4888543.0,4516910.0,4464520.0,5386659.0,4172559.0,4313095.0,5014949.0,4313574.0,4167056.0,4874456.0,4224376.0,4290138.0,5139691.0,4246555.0,4231204.0,4984556.0,4305333.0,4371659.0,4961224.0,4337758.0,4344337.0,4982623.0,4381860.0,4295043.0,5049058.0,4330328.0,4375820.0,5089429.0,4257591.0,4324551.0,5071385.0,4530629.0,4593671.0,5053432.0,4310385.0,4348392.0,5145240.0,4222509.0,4409534.0,4942339.0,4427362.0,4252915.0,4995739.0,4082540.0,4341775.0,4962526.0,4353139.0,4408497.0,4914642.0,4467927.0,4532867.0,5097591.0,4310168.0,4324512.0,4906681.0,4290233.0,4347951.0,5104402.0,4358806.0,4338310.0,5035134.0,4330733.0,4350894.0,4999506.0,4424764.0,4419431.0,4943987.0,4362392.0,4218890.0,4972190.0,4283959.0,4486969.0,4885604.0,4382101.0,4376279.0,5126313.0,4315668.0,4231069.0,4906033.0,4399914.0,4273622.0,5087946.0,4442245.0,4360881.0,4972190.0,4554764.0,4454954.0,4972019.0,4461434.0,4347701.0,4966017.0,4343834.0,4493542.0,5015912.0,4465205.0,4302382.0,5126551.0,4255110.0,4370609.0,4892984.0,4328431.0,4486701.0,4916682.0,4351181.0,4395419.0,5010288.0,4.2609e6,4423762.0,4882562.0,4400008.0,4352669.0,5218122.0,4309863.0,4413346.0,4887327.0,4506033.0,4381189.0,5143410.0,4381793.0,4282538.0,4995207.0,4241631.0,4339637.0,4901083.0,4460148.0,4446294.0,5077480.0,4171612.0,4381748.0,5035139.0,4221303.0,4416969.0,4878113.0,4385268.0,4351744.0,5089053.0,4489796.0,4399687.0,4997331.0,4394331.0,4283678.0,4850791.0,4305025.0,4196704.0,5059426.0,4424345.0,4299637.0,5019661.0,4352506.0,4287370.0,5054943.0,4404537.0,4273012.0,9551503.0,4269142.0,4272538.0,4946084.0,4412262.0,4227266.0,4857583.0,4270534.0,4331185.0,5000549.0,4297362.0,4141785.0,5140716.0,4319337.0,4389982.0,4934034.0,4396404.0,4348092.0,5107427.0,4313052.0,4317759.0,4902184.0,4293505.0,4323311.0,4887520.0,4315497.0,4390347.0,5005887.0,4442232.0,4360145.0,5168935.0,4443135.0,4211280.0,4979220.0,4531161.0,4248926.0,4961642.0,4323356.0,4407947.0,4881725.0,4263570.0,4392461.0,4936489.0,4291514.0,4311578.0,5022358.0,4391007.0,4233134.0,4941037.0,4235206.0,4173834.0,5014121.0,4351859.0,4434069.0,4992565.0,4176568.0,4353475.0,4850141.0,4378399.0,4275139.0,5102433.0,4359369.0,4372943.0,6119714.0,4522956.0,4274620.0,4984784.0,4172379.0,4186743.0,4950544.0,4410368.0,4.3749e6,4919965.0,4345002.0,4278685.0,4891378.0,4185768.0,4148110.0,4825016.0,4303517.0,4452647.0,4983112.0,4442875.0,4397271.0,5069871.0,4448686.0,4414617.0,4947066.0,4452605.0,4305442.0,4975020.0,4302627.0,4369312.0,4880974.0,4359212.0,4306701.0,5145027.0,4726743.0,4358254.0,4983288.0,4395040.0,4323701.0,5081328.0,4416307.0,4528363.0,5004850.0,4454653.0,4279746.0,5164289.0,4248297.0,4446105.0,5070528.0,4350897.0,4497678.0,5095871.0,4418172.0,4507893.0,4946055.0,4155843.0,4113080.0,4845292.0,6303710.0,4352558.0,4895210.0,4258590.0,4239795.0,4936255.0,4339450.0,4329998.0,4962387.0,4254179.0,4185606.0,4965808.0,4239669.0,4289171.0,4999951.0,4268794.0,4208175.0,5521437.0,4239467.0,4252707.0,4803590.0,4341734.0,4546507.0,5211291.0,4369556.0,4.374e6,5056268.0,4359956.0,4453976.0,5147550.0,4317709.0,4365735.0,4938596.0,4425540.0,4313318.0,4775066.0,4204538.0,4367616.0,4945168.0,4420615.0,4245041.0,5032917.0,4204061.0,4424847.0,4723195.0,4169978.0,4270077.0,5327568.0,4294988.0,4340468.0,5069492.0,4404671.0,4542486.0,5416268.0,4863932.0,4533674.0,5282881.0,4650961.0,4451566.0,5009482.0,4309440.0,4363097.0,4927543.0,4383929.0,4481110.0,5273574.0,4521039.0,4693826.0,5434317.0,4740107.0,4884208.0,5673808.0,4455760.0,4252190.0,5119530.0,4421933.0,4403606.0,5985858.0,4724698.0,4352666.0,6047930.0,4569734.0,4555619.0,5316343.0,4754464.0,4491403.0,5459417.0,4413606.0,4521658.0,5269874.0,4648384.0,4601947.0,5928024.0,4257827.0,4357414.0,5021992.0,4383279.0,4341333.0,5311169.0,4539076.0,4462438.0,6051131.0,4669510.0,4572898.0,5113163.0,4963797.0,4792623.0,5197681.0,5022961.0,4946329.0,5249182.0,5269065.0,4672876.0,5.3927e6,4156384.0,4425252.0,5075617.0,4679497.0,4770504.0,5.7354e6,4383841.0,4687254.0,5413856.0,4733225.0,4407183.0,5880425.0,4542771.0],"memory_usages":[3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096,3200096],"tag":null};
+
+      var inputHeadline = " (Middle (100 Thousand))"
+
+      
+        drawRunTimeHistogram(scenario, inputHeadline);
+        drawRawRunTimeChart(scenario, inputHeadline);
+      
+
+      
+        if (scenario.memory_usage_statistics.std_dev !== 0) {
+          drawMemoryHistogram(scenario, inputHeadline);
+          drawRawMemoryChart(scenario, inputHeadline);
+        };
+      
+    </script>
+  </body>
+</html>

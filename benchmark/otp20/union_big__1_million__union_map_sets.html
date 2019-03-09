@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Benchee Report</title>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/benchee.css">
+    <link rel="stylesheet" type="text/css" href="assets/fontello/css/fontello.css">
+  
+</head>
+
+  <body>
+
+    <div class="header">
+  <h1>benchee report</h1>
+  
+  <span class="input-label">
+    Big (1 Million)
+  </span>
+
+
+  <span class="version-note">
+  <a href="javascript:toggleSystemDataInfo();" title="Click to toggle system info">System info</a>
+</span>
+
+</div>
+
+
+    <article id="system-info" class="benchee-systeminfo" >
+  <h3>System info</h3>
+  <ul class="benchee-systeminfo-list">
+    <li>Elixir: 1.7.4</li>
+    <li>Erlang: 20.3.8.9</li>
+    <li>Operating system: Linux</li>
+    <li>Available memory: 7.74 GB</li>
+    <li>CPU Information: Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz</li>
+    <li>Number of Available Cores: 4</li>
+  </ul>
+</article>
+
+
+    
+      <article>
+        <h2>
+          <a name="run_time" href="#run_time">union map_sets Run Time</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual run time distribution for union map_sets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+        <th>Iterations per Second</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">union map_sets</td>
+        
+        
+          <td>20.96</td>
+          <td>47.71 ms</td>
+          <td>±35.82%</td>
+          <td>38.57 ms</td>
+          <td>32.14 ms</td>
+          <td>157.02 ms</td>
+        
+        <td>102</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="run-times-histogram" class="plot"></div>
+        </section>
+        <section class="benchee-plot-container">
+          <div id="raw-run-times" class="plot"></div>
+        </section>
+      </article>
+    
+
+    
+      <article>
+        <h2>
+          <a name="memory" href="#memory">union map_sets Memory</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual memory usage distribution for union map_sets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">union map_sets</td>
+        
+        
+          <td>12.78 MB</td>
+          <td>±0.00%</td>
+          <td>12.78 MB</td>
+          <td>12.78 MB</td>
+          <td>12.78 MB</td>
+        
+        <td>5</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        
+      </article>
+    
+
+    <footer>
+      <a href="https://github.com/PragTob/benchee" target="blank">benchee version: 0.14.0 </a>
+<br/>
+<a href="https://github.com/PragTob/benchee_html" target="blank">benchee_html version: 0.6.0</a>
+
+
+    </footer>
+
+    
+  <script src="assets/javascripts/plotly-1.30.1.min.js"></script>
+  <script src="assets/javascripts/benchee.js"></script>
+
+
+
+    <script>
+      var scenario = {"name":"union map_sets","job_name":"union map_sets","input_name":"Big (1 Million)","run_time_statistics":{"average":47714691.313725494,"ips":20.957905677833494,"maximum":157022669.0,"median":38567813.5,"minimum":32143999.0,"mode":null,"percentiles":{"50":38567813.5,"99":154543043.0299999},"sample_size":102,"std_dev":17089389.049921334,"std_dev_ips":7.506237469821482,"std_dev_ratio":0.35815780380005185},"memory_usage_statistics":{"average":13400968.0,"ips":null,"maximum":13400968,"median":13400968.0,"minimum":13400968,"mode":13400968,"percentiles":{"50":13400968.0,"99":13400968.0},"sample_size":5,"std_dev":0.0,"std_dev_ips":null,"std_dev_ratio":0.0},"run_times":[37029868.0,36174851.0,36674814.0,37100602.0,157022669.0,37520202.0,39136634.0,63218502.0,33016203.0,34290253.0,60713908.0,32966948.0,33348977.0,62497292.0,32580646.0,32143999.0,64785773.0,38594624.0,38845214.0,66385636.0,38581764.0,38593355.0,65467564.0,38421262.0,38206827.0,74368470.0,38412609.0,37901411.0,67079820.0,38272193.0,40512741.0,63855376.0,37721877.0,37643808.0,65142511.0,37046125.0,37673533.0,66452303.0,39087034.0,38294568.0,66566835.0,38553863.0,38334098.0,65193922.0,36699379.0,37105743.0,66109550.0,38596407.0,38671680.0,66760180.0,37955697.0,40998794.0,64903980.0,38943584.0,38810505.0,66242332.0,38703795.0,38510158.0,64990236.0,36892689.0,37848721.0,64894040.0,37861750.0,37691867.0,66500159.0,38790024.0,38490893.0,66043379.0,38209699.0,37432846.0,66183216.0,38417288.0,41149788.0,64990178.0,38301899.0,38432227.0,66569947.0,38117110.0,37460337.0,65580347.0,37352596.0,37658035.0,66050169.0,38311624.0,38947523.0,66437640.0,37918752.0,38686143.0,66174963.0,37604494.0,37716430.0,65929225.0,37719756.0,40125019.0,65454376.0,37861559.0,38368841.0,65822080.0,38298654.0,38416399.0,66245805.0,38506523.0],"memory_usages":[13400968,13400968,13400968,13400968,13400968],"tag":null};
+
+      var inputHeadline = " (Big (1 Million))"
+
+      
+        drawRunTimeHistogram(scenario, inputHeadline);
+        drawRawRunTimeChart(scenario, inputHeadline);
+      
+
+      
+        if (scenario.memory_usage_statistics.std_dev !== 0) {
+          drawMemoryHistogram(scenario, inputHeadline);
+          drawRawMemoryChart(scenario, inputHeadline);
+        };
+      
+    </script>
+  </body>
+</html>

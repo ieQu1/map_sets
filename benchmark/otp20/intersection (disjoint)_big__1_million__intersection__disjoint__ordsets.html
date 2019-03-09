@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Benchee Report</title>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/benchee.css">
+    <link rel="stylesheet" type="text/css" href="assets/fontello/css/fontello.css">
+  
+</head>
+
+  <body>
+
+    <div class="header">
+  <h1>benchee report</h1>
+  
+  <span class="input-label">
+    Big (1 Million)
+  </span>
+
+
+  <span class="version-note">
+  <a href="javascript:toggleSystemDataInfo();" title="Click to toggle system info">System info</a>
+</span>
+
+</div>
+
+
+    <article id="system-info" class="benchee-systeminfo" >
+  <h3>System info</h3>
+  <ul class="benchee-systeminfo-list">
+    <li>Elixir: 1.7.4</li>
+    <li>Erlang: 20.3.8.9</li>
+    <li>Operating system: Linux</li>
+    <li>Available memory: 7.74 GB</li>
+    <li>CPU Information: Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz</li>
+    <li>Number of Available Cores: 4</li>
+  </ul>
+</article>
+
+
+    
+      <article>
+        <h2>
+          <a name="run_time" href="#run_time">intersection (disjoint) ordsets Run Time</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual run time distribution for intersection (disjoint) ordsets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+        <th>Iterations per Second</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">intersection (disjoint) ordsets</td>
+        
+        
+          <td>57.67</td>
+          <td>17.34 ms</td>
+          <td>±1.26%</td>
+          <td>17.35 ms</td>
+          <td>16.77 ms</td>
+          <td>19.61 ms</td>
+        
+        <td>286</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="run-times-histogram" class="plot"></div>
+        </section>
+        <section class="benchee-plot-container">
+          <div id="raw-run-times" class="plot"></div>
+        </section>
+      </article>
+    
+
+    
+      <article>
+        <h2>
+          <a name="memory" href="#memory">intersection (disjoint) ordsets Memory</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual memory usage distribution for intersection (disjoint) ordsets.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">intersection (disjoint) ordsets</td>
+        
+        
+          <td>0 MB</td>
+          <td>±0.00%</td>
+          <td>0 MB</td>
+          <td>0 MB</td>
+          <td>0 MB</td>
+        
+        <td>15</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        
+      </article>
+    
+
+    <footer>
+      <a href="https://github.com/PragTob/benchee" target="blank">benchee version: 0.14.0 </a>
+<br/>
+<a href="https://github.com/PragTob/benchee_html" target="blank">benchee_html version: 0.6.0</a>
+
+
+    </footer>
+
+    
+  <script src="assets/javascripts/plotly-1.30.1.min.js"></script>
+  <script src="assets/javascripts/benchee.js"></script>
+
+
+
+    <script>
+      var scenario = {"name":"intersection (disjoint) ordsets","job_name":"intersection (disjoint) ordsets","input_name":"Big (1 Million)","run_time_statistics":{"average":17338758.276223775,"ips":57.67425694902709,"maximum":19606063.0,"median":17351723.0,"minimum":16769850.0,"mode":17326733.0,"percentiles":{"50":17351723.0,"99":17900204.409999996},"sample_size":286,"std_dev":218372.86143596334,"std_dev_ips":0.7263779978075227,"std_dev_ratio":0.012594492521152039},"memory_usage_statistics":{"average":0.0,"ips":null,"maximum":0,"median":0.0,"minimum":0,"mode":0,"percentiles":{"50":0.0,"99":0.0},"sample_size":15,"std_dev":0.0,"std_dev_ips":null,"std_dev_ratio":0},"run_times":[17469055.0,17560435.0,17566807.0,17500559.0,17216815.0,17507630.0,17328756.0,17432183.0,17604937.0,17394880.0,17451809.0,17389236.0,17363948.0,17439363.0,17797367.0,17160681.0,17419351.0,17554132.0,17396948.0,17351240.0,17110241.0,16945978.0,17013585.0,16949649.0,17438310.0,17688327.0,19606063.0,16872308.0,17231734.0,17368496.0,17314433.0,17207949.0,17145401.0,17221468.0,17397403.0,17482913.0,17442945.0,17368044.0,17251339.0,17255806.0,17300540.0,17378075.0,17377713.0,17537711.0,17173603.0,17471906.0,17158629.0,17175082.0,17263337.0,17507706.0,17214429.0,17175127.0,17432753.0,17358462.0,17178096.0,17335823.0,17394010.0,17244651.0,17508786.0,17341106.0,17449763.0,17244239.0,17293426.0,17399238.0,17341638.0,17362480.0,17408720.0,17165227.0,17326733.0,17381084.0,17220047.0,17405018.0,17309704.0,17261502.0,17466120.0,17090658.0,17475278.0,17551870.0,17207927.0,17152662.0,17251377.0,17196473.0,18588424.0,17156478.0,1.733e7,17265857.0,17247089.0,17420350.0,17348990.0,17350287.0,17256961.0,17361557.0,17449254.0,17288348.0,17340399.0,17278625.0,17422486.0,17397438.0,17282389.0,17440279.0,17320841.0,17483324.0,17310652.0,17409232.0,17470206.0,17135069.0,17169998.0,17484187.0,17343498.0,17340853.0,17380330.0,17151375.0,17380111.0,17372655.0,17410849.0,17419086.0,17401927.0,17084872.0,17317649.0,17290474.0,17337569.0,17613681.0,17301958.0,17336248.0,17375470.0,16943333.0,17132070.0,16993478.0,17082428.0,17065141.0,17116874.0,17436157.0,17283997.0,17402465.0,17245517.0,17305150.0,17252626.0,17259252.0,17224356.0,16873668.0,17393461.0,17600876.0,17377174.0,17359498.0,17353758.0,17186594.0,17511806.0,17426830.0,17369288.0,17137084.0,17221517.0,17436943.0,17412621.0,17142967.0,16780774.0,16893127.0,17311976.0,17198624.0,17344549.0,17418936.0,17267110.0,17419841.0,17174479.0,17375127.0,17223918.0,17164501.0,17332218.0,17327444.0,17421282.0,17452162.0,17406718.0,17556453.0,17410360.0,17217919.0,17533252.0,17343277.0,17329684.0,17191269.0,17332271.0,17267771.0,17380868.0,17414446.0,17201501.0,17536674.0,17088257.0,17131967.0,17185854.0,17439168.0,17102052.0,17266761.0,17456155.0,17344458.0,17344921.0,17402766.0,16978544.0,16856453.0,17132148.0,17328331.0,17576778.0,17631636.0,17498034.0,17552660.0,17406458.0,17505866.0,1.73946e7,17384794.0,17326733.0,17430755.0,17343607.0,17313943.0,17348670.0,17362913.0,17525692.0,17384745.0,17393573.0,16977802.0,17360662.0,17512401.0,17368139.0,17087132.0,17105415.0,17137899.0,16926717.0,17412434.0,17433754.0,17387121.0,17407331.0,17492817.0,17366371.0,17364234.0,17356538.0,17352206.0,17399009.0,17335698.0,17482851.0,17573477.0,17285721.0,16769850.0,16975977.0,17358949.0,17385975.0,17335957.0,17309960.0,17456272.0,17370985.0,17299430.0,17289578.0,17332366.0,17268704.0,17381064.0,17493266.0,17199339.0,17437142.0,17416785.0,17296910.0,17416461.0,17383518.0,17547119.0,17375834.0,17187789.0,17353331.0,17421103.0,17389603.0,17423648.0,17475462.0,17344039.0,17403897.0,17693277.0,17421785.0,17329373.0,17320715.0,17426184.0,17214026.0,17297025.0,17426524.0,17296459.0,17277601.0,17477333.0,17259165.0,17299793.0,17241733.0,17427131.0,17379701.0,17419277.0,17278487.0,17383906.0],"memory_usages":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"tag":null};
+
+      var inputHeadline = " (Big (1 Million))"
+
+      
+        drawRunTimeHistogram(scenario, inputHeadline);
+        drawRawRunTimeChart(scenario, inputHeadline);
+      
+
+      
+        if (scenario.memory_usage_statistics.std_dev !== 0) {
+          drawMemoryHistogram(scenario, inputHeadline);
+          drawRawMemoryChart(scenario, inputHeadline);
+        };
+      
+    </script>
+  </body>
+</html>
