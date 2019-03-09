@@ -36,7 +36,7 @@
 -type set(Key) :: #{Key => term()}.
 -type set() :: set(term()).
 
--define(UNUSED, unused).
+-define(UNUSED, []).
 
 -ifdef(OTP_RELEASE). %% OTP21+ supports map iterators
 
